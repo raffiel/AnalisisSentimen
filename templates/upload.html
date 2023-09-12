@@ -1,0 +1,50 @@
+{% extends "layout.html" %} {% block title %}Sentimen Analisis Capres 2024{% endblock %} {% block background %}
+<body class="bg" style="font-family: 'Poppins'; background: url(/static/img/bgbaru2.jpg); background-size: 130em"></body>
+{% endblock %} {% block content %}
+
+<div class="container1" style="width: 35%; height: 500px; float: left; text-align: left; padding-left: 0px; padding-top: 60em; color: #fff">
+  <h5>Rafi El Falih</h5>
+  <h5>4611417039</h5>
+</div>
+
+<div class="container2" style="width: 65%; height: 500px; float: left">
+  <div style="text-align: justify">
+    <div style="color: #014a73; padding-top: 15em">
+      <div class="title2" style="font-weight: 900">
+        <h1>Sentimen Analisis Calon Presiden Indonesia 2024</h1>
+        <h1>Di Twitter Menggunakan Naive Bayes</h1>
+        <h1>Dan <span style="font-style: italic"> Term Frequency -Inverse Document Frequency</span> (TF-IDF)</h1>
+      </div>
+      <br />
+      <br />
+      <br />
+      <button
+        class="modal-button btn btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#upload"
+        style="border: none; border-radius: 15px; cursor: pointer; transition: background-color 0.3s ease; padding: 10px 20px; font-weight: 400"
+      >
+        Mulai
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="upload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p>Upload dataset dengan format csv</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/upload" method="post" enctype="multipart/form-data" class="input-group">
+          <input type="file" class="form-control" name="file" accept=".csv" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+          <button type="submit" value="Upload" class="btn btn-primary" id="inputGroupFileAddon04" onclick="spinner()">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

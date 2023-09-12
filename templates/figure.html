@@ -1,0 +1,427 @@
+{% extends "layout.html" %} {% block title %}Hasil | Sentimen Analisis Capres 2024{% endblock %} {% block background %}
+<body class="bg" style="font-family: 'Poppins';background: url(/static/img/bgperpanjang.jpg);background-size: 130em"></body>
+{% endblock %} {% block content %}
+<div class="container" style="text-align: center; color: #014a73">
+  <h1 style="font-weight: 700;padding-top: 2em;">Hasil</h1>
+</div>
+<div class="container" style="text-align: center; color: #014a73; padding-bottom: 3em">
+  <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding-top: 2em">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true" style="padding-bottom: 0%"><h4>Hasil Keseluruhan</h4></button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#anies-tab-pane" type="button" role="tab" aria-controls="anies-tab-pane" aria-selected="false"><h4>Anies Baswedan</h4></button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#ganjar-tab-pane" type="button" role="tab" aria-controls="ganjar-tab-pane" aria-selected="false"><h4>Ganjar Pranowo</h4></button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#prabowo-tab-pane" type="button" role="tab" aria-controls="prabowo-tab-pane" aria-selected="false"><h4>Prabowo Subianto</h4></button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+      <br>
+      <div class="container" style="padding-top: 1em;padding-bottom: 1em; width: 1060px; align-content: flex-start;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;">
+        <h4 style="text-align: start;"><i class="fa-solid fa-bullseye"></i>Akurasi :<span style="font-weight: 600;color: #014a73;">80.015%</span> </h4>
+      </div>  
+      <br>
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; padding-bottom: 2em"">
+            <h2 style="padding-top: 1em; font-weight: 700">Sentimen Positif</h2>
+            <div style="width: 700px; height: 300px;margin:0 auto;">
+                <canvas id="myChart" ></canvas>
+            </div>
+            <ul style="list-style-type: none; margin: 2em 0 0 0; padding: 0; display: flex; flex-direction: row; align-items: center; justify-content: center; border-radius: 2px; background-color: rgba(255, 255, 255, 0.8); padding: 5px;">
+                <li style="margin-left: 4em;margin-right: 7em; display: flex; flex-direction: column; align-items: center;"><img src="/static/img/anies.png" style="max-height: 110px; margin-bottom: 5px;"><span style="background-color: #36A2EB; border-radius: 50%; padding: 5px 10px; color: white;">Anies</span></li>
+                <li style="margin-right: 7em; display: flex; flex-direction: column; align-items: center;"><img src="/static/img/ganjar.png" style="max-height: 110px; margin-bottom: 5px;"><span style="background-color: #FF5478; border-radius: 50%; padding: 5px 10px; color: white;">Ganjar</span></li>
+                <li style="margin-right: 10em; display: flex; flex-direction: column; align-items: center;"><img src="/static/img/prabowo.png" style="max-height: 110px; margin-bottom: 5px;"><span style="background-color: #FFCD56; border-radius: 50%; padding: 5px 10px; color: white;">Prabowo</span></li>
+            </ul>
+        </div>
+    
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Anies', 'Ganjar', 'Prabowo'],
+                    datasets: [{
+                        data: [295, 366, 216],
+                        backgroundColor: [
+                            '#36A2EB',
+                            '#FF5478',
+                            '#FFCD56'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false,
+                        
+                    },tooltips: {
+                     enabled:false
+                 }
+                }
+            });
+        </script>
+<br>
+<br>
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; padding-bottom: 2em">
+        <h2 style="padding-top: 1em; font-weight: 700">Sentimen Negatif</h2>
+        <div style="width: 700px; height: 300px;margin:0 auto;">
+            <canvas id="myChart2" ></canvas>
+        </div>
+        <ul style="list-style-type: none; margin: 2em 0 0 0; padding: 0; display: flex; flex-direction: row; align-items: center; justify-content: center; border-radius: 10px; background-color: rgba(255, 255, 255, 0.8); padding: 5px;">
+            <li style="margin-left: 4em;margin-right: 7em; display: flex; flex-direction: column; align-items: center;"><img src="/static/img/anies.png" style="max-height: 110px; margin-bottom: 5px;"><span style="background-color: #36A2EB; border-radius: 50%; padding: 5px 10px; color: white;">Anies</span></li>
+            <li style="margin-right: 7em; display: flex; flex-direction: column; align-items: center;"><img src="/static/img/ganjar.png" style="max-height: 110px; margin-bottom: 5px;"><span style="background-color: #FF5478; border-radius: 50%; padding: 5px 10px; color: white;">Ganjar</span></li>
+            <li style="margin-right: 10em; display: flex; flex-direction: column; align-items: center;"><img src="/static/img/prabowo.png" style="max-height: 110px; margin-bottom: 5px;"><span style="background-color: #FFCD56; border-radius: 50%; padding: 5px 10px; color: white;">Prabowo</span></li>
+        </ul>
+    
+
+    <script>
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Anies', 'Ganjar', 'Prabowo'],
+            datasets: [{
+                data: [280, 227, 207],
+                backgroundColor: [
+                    '#36A2EB',
+                    '#FF5478',
+                    '#FFCD56'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            title: {
+					display: false
+				},
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            legend: {
+                display: false,
+                
+        },
+        tooltips: {
+            enabled:false
+        }
+        }
+    });
+    </script>
+      </div>
+      
+    </div>
+    <div class="tab-pane fade" id="anies-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; padding-bottom: 2em">
+            <h2 style="padding-top: 1em; font-weight: 700">Anies Baswedan</h2>
+    <div style="padding-top: 1em;">
+        <table>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Sentimen Positif</th>
+                <th scope="col">Sentimen Negatif</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr>
+                <th scope="row">Anies Baswedan</th>
+                <td>295</td>
+                <td>280</td>
+                <td>575</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="text-align:center;width:450px;height:450px; padding-top:2em">
+            <canvas id="chartanies" style="background: url(/static/img/aniesbulat.png); background-repeat: no-repeat; background-attachment: fixed center; background-size: 23em; background-position: center"></canvas>
+        </div>
+    
+        <script>
+            var ctx = document.getElementById('chartanies').getContext('2d');
+    
+            // create image object
+            var img = new Image();
+            img.src = '/static/img/aniesbulat.png';
+    
+            // set doughnut chart data
+            var data = {
+                labels: ['Sentimen Positif', 'Sentimen Negatif'],
+                datasets: [{
+                    label: 'Sentiment Analysis',
+                    data: [295, 280],
+                    backgroundColor: ['#36A2EB', '#FF5478']
+                }]
+            };
+    
+            // set doughnut chart options
+            var options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom'
+                },
+                plugins: {
+                    // draw image in the center of the doughnut chart
+                    centerImage: {
+                        image: img,
+                        width: 100, // image width
+                        height: 100 // image height
+                    }
+                }
+            };
+    
+            // create doughnut chart with data and options
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: options
+            });
+        </script>
+        
+    </div>
+            
+            
+        </div>
+        <br>
+        <br>
+        <div class="container" style="overflow: scroll; height: 500px; padding-top: 1em; width: 1050px; align-content: flex-start;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;">
+          <h4 style="text-align: start;">Berikut ini sentimen analisis mengenai <span style="font-weight: 600;color: #014a73;">Anies Baswedan</span> dari media sosial Twitter (Periode Oktober 2022)</h4>
+          <table class="table-paginate">
+            <tr style="font-weight: 700">
+              <th>No.</th>
+              <th>Tweet</th>
+              <th>Sentiment</th>
+            </tr>
+            <tbody>
+              {% for row in anies_data %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>{{row[0]}}</td>
+              <td style="background-color: {% if row[1] == 'negatif' %} #FF6384; {% elif row[1] == 'positif' %} #36A2EB; {% else %} #fcd639; {% endif %} color: white; font-weight: bold;">{{row[1]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        
+
+
+      </div>
+      
+    
+      <div class="tab-pane fade" id="ganjar-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; padding-bottom: 2em">
+            <h2 style="padding-top: 1em; font-weight: 700">Ganjar Pranowo</h2>
+    <div style="padding-top: 1em;">
+        <table>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Sentimen Positif</th>
+                <th scope="col">Sentimen Negatif</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr>
+                <th scope="row">Ganjar Pranowo</th>
+                <td>366</td>
+                <td>227</td>
+                <td>593</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="text-align:center;width: 450px;height: 450px;padding-top: 3em;">
+            <canvas id="chartganjar" style="background: url(/static/img/ganjarbulat.png); background-repeat: no-repeat; background-attachment: fixed center; background-size: 23em; background-position: center"></canvas>
+        </div>
+    
+        <script>
+            var ctx = document.getElementById('chartganjar').getContext('2d');
+    
+            // set doughnut chart data
+            var data = {
+                labels: ['Sentimen Positif', 'Sentimen Negatif'],
+                datasets: [{
+                    label: 'Sentiment Analysis',
+                    data: [366, 227],
+                    backgroundColor: ['#36A2EB', '#FF5478']
+                }]
+            };
+    
+            // set doughnut chart options
+            var options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom'
+                },
+                plugins: {
+                    // draw image in the center of the doughnut chart
+                    centerImage: {
+                        image: img,
+                        width: 100, // image width
+                        height: 100 // image height
+                    }
+                }
+            };
+    
+            // create doughnut chart with data and options
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: options
+            });
+        </script>
+    </div>
+            
+            
+        </div>
+        <br>
+        <br>
+        <div class="container" style="overflow: scroll; height: 500px; padding-top: 1em; width: 1050px; align-content: flex-start;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;">
+          <h4 style="text-align: start;">Berikut ini sentimen analisis mengenai <span style="font-weight: 600;color: #014a73;">Ganjar Pranowo</span> dari media sosial Twitter (Periode Oktober 2022)</h4>
+          <table class="table-paginate">
+            <tr style="font-weight: 700">
+              <th>No.</th>
+              <th>Tweet</th>
+              <th>Sentiment</th>
+            </tr>
+            <tbody>
+              {% for row in ganjar_data %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>{{row[0]}}</td>
+              <td style="background-color: {% if row[1] == 'negatif' %} #FF6384; {% elif row[1] == 'positif' %} #36A2EB; {% else %} #fcd639; {% endif %} color: white; font-weight: bold;">{{row[1]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    
+        
+<br>
+<br>
+
+      </div>
+
+      <div class="tab-pane fade" id="prabowo-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; padding-bottom: 2em">
+            <h2 style="padding-top: 1em; font-weight: 700">Prabowo Subianto</h2>
+    <div style="padding-top: 1em;">
+        <table>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Sentimen Positif</th>
+                <th scope="col">Sentimen Negatif</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr>
+                <th scope="row">Prabowo Subianto</th>
+                <td>216</td>
+                <td>207</td>
+                <td>423</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="text-align:center;width: 450px;height: 450px;padding-top: 3em;">
+            <canvas id="chartprabowo" style="background: url(/static/img/prabowobulat.png); background-repeat: no-repeat; background-attachment: fixed center; background-size: 23em; background-position: center"></canvas>
+        </div>
+    
+        <script>
+            var ctx = document.getElementById('chartprabowo').getContext('2d');
+    
+            // set doughnut chart data
+            var data = {
+                labels: ['Sentimen Positif', 'Sentimen Negatif'],
+                datasets: [{
+                    label: 'Sentiment Analysis',
+                    data: [216, 207],
+                    backgroundColor: ['#36A2EB', '#FF5478']
+                }]
+            };
+    
+            // set doughnut chart options
+            var options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom'
+                },
+                plugins: {
+                    // draw image in the center of the doughnut chart
+                    centerImage: {
+                        image: img,
+                        width: 100, // image width
+                        height: 100 // image height
+                    }
+                }
+            };
+    
+            // create doughnut chart with data and options
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: options
+            });
+        </script>
+    </div>
+            
+            
+        </div>
+        <br>
+        <br>
+        <div class="container" style="overflow: scroll; height: 500px; padding-top: 1em; width: 1050px; align-content: flex-start;border-radius: 25px; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;">
+          <h4 style="text-align: start;">Berikut ini sentimen analisis mengenai <span style="font-weight: 600;color: #014a73;">Prabowo Subianto</span> dari media sosial Twitter (Periode Oktober 2022)</h4>
+          <table class="table-paginate">
+            <tr style="font-weight: 700">
+              <th>No.</th>
+              <th>Tweet</th>
+              <th>Sentiment</th>
+            </tr>
+            <tbody>
+              {% for row in prabowo_data %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>{{row[0]}}</td>
+              <td style="background-color: {% if row[1] == 'negatif' %} #FF6384; {% elif row[1] == 'positif' %} #36A2EB; {% else %} #fcd639; {% endif %} color: white; font-weight: bold;">{{row[1]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        
+<br>
+<br>
+
+      </div>
+
+  </div>
+  <div class="position-fixed" style="right: 2em; bottom: 2m; z-index: 1000">
+    <form action="/tfidf" method="POST">
+      <button type="submit" class="btn btn-outline-primary btn-lg">Proses Selanjutnya</button>
+    </form>
+  </div>
+
+  {% endblock %}
+</div>

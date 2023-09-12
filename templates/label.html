@@ -1,0 +1,98 @@
+{% extends "layout.html" %} {% block title %}Labeling | Sentimen Analisis Capres 2024{% endblock %} {% block background %}
+<body class="bg" style="font-family: 'Poppins'; background: url(/static/img/bgbaru.jpg); background-size: 130em"></body>
+{% endblock %} {% block content %}
+<div class="container" style="text-align: center; color: #014a73; padding-top: 3em">
+  <h1 style="font-weight: 700"><span style="font-style: italic">Labeling</span> menggunakan Kamus Leksikon</h1>
+</div>
+
+<!--Ini untuk action tab click-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-dialog-centere" style="background-color: #d1e7dd; color: #0f5132">
+    <!-- Konten popup -->
+    <div class="modal-content">
+      <div class="modal-body">
+        <span style="display: inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+          </svg>
+        </span>
+        <span style="display: inline-block">
+          <h4>Data telah berhasil diberi label.</h4>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="w3-container" style="padding-top: 2em">
+  <div class="w3-row" style="padding-left: 3em; width: 90%">
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-radius: 5px">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#dataset-berlabel" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><h4>Dataset Berlabel</h4></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><h4>Info</h4></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#kamus-leksikon" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false"><h4>Kamus Leksikon</h4></button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="dataset-berlabel" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div class="container" style="overflow: scroll; height: 500px">
+          <table class="table-paginate">
+            <thead>
+              <tr style="font-weight: 700">
+                <th>No</th>
+                <th>Kata</th>
+                <th>Sentimen</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for result in results %}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td>{{(result[0])}}</td>
+                <td style="background-color: {% if result[1] == 'negatif' %} #FF6384; {% elif result[1] == 'positif' %} #36A2EB; {% else %} #fcd639; {% endif %} color: white; font-weight: bold;">{{result[1]}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="profile-tab" tabindex="0" style="padding-left: 5px">
+        <div style="width: 90%">
+          <h5>Penelitian ini menggunakan kamus leksikon Indonesia yang merupakan hasil penelitian <span style="color: #014a73">Koto & Rahmaningtyas (2017)</span> yang memuat 3,609 kata positif dan 6,609 kata negatif.</h5>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="kamus-leksikon" role="tabpanel" aria-labelledby="contact-tab" tabindex="0" style="justify-content: flex-start">
+        <div class="container" style="overflow: scroll; height: 500px; padding-top: 0; width: 400px; align-content: flex-start">
+          <table class="table-paginate">
+            <tr style="font-weight: 700">
+              <th>No.</th>
+              <th>Kata</th>
+              <th>Bobot</th>
+            </tr>
+            <tbody>
+              {% for row in data_csv %}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td>{{ row[0] }}</td>
+                <td style="color: black">{{ row[1] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="position-fixed" style="right: 2em; bottom: 2m; z-index: 1000">
+  <form action="/figure" method="POST">
+    <button type="submit" class="btn btn-outline-primary btn-lg">Proses Selanjutnya</button>
+  </form>
+</div>
+
+{% endblock %}

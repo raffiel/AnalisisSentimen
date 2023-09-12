@@ -1,0 +1,168 @@
+.negatif {
+  background-color: #ff8886;
+  color: white;
+  font-weight: bold;
+}
+
+.positif {
+  background-color: #01814e;
+  color: white;
+  font-weight: bold;
+}
+
+.netral {
+  background-color: #fcd639;
+  color: white;
+  font-weight: bold;
+}
+table.table-paginate th,
+table.table-paginate td {
+  padding: 10px;
+  text-align: left;
+}
+
+table.table-paginate td:nth-child(3) {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sidepanel {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #014a73;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #b9b9b9;
+  display: block;
+  transition: 0.3s;
+}
+.sidepanel p {
+  padding: 8px 8px 8px 25px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #b9b9b9;
+  display: block;
+  transition: 0.3s;
+  padding-top: 17em;
+}
+
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #014a73;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 0px 0px 25px 0px;
+}
+
+.openbtn:hover {
+  background-color: #006ca9;
+}
+
+.container .title h2 {
+  font-weight: 500;
+}
+
+.container h3 {
+  font-weight: 500;
+}
+.text {
+  padding-left: 7em;
+  padding-right: 7em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: large;
+  color: #424242;
+  line-height: 1.6;
+}
+
+.text .miring {
+  font-style: italic;
+}
+
+.text .tebal {
+  font-weight: 800;
+}
+
+table,
+td,
+th {
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 25px;
+  background: #ececec;
+}
+
+th,
+td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  font-weight: 550;
+}
+
+.w3-container {
+  padding-top: 0em;
+}
+
+.modal-button:hover {
+  background-color: #014a73;
+}
+
+@keyframes revealing-bars {
+  0% {
+    transform: scaleY(0);
+  }
+  15% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes progress-bar {
+  0% {
+    background-position-x: progress-height;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

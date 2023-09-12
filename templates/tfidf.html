@@ -1,0 +1,86 @@
+{% extends "layout.html" %} {% block title %}Dataset | Sentimen Analisis Capres 2024{% endblock %} {% block background %}
+<body class="bg" style="font-family: 'Poppins'; background: url(/static/img/bgbaru.jpg); background-size: 130em"></body>
+{% endblock %} {% block content %}
+<div class="container" style="text-align: center; color: #014a73">
+  <h1 style="font-weight: 700">TF-IDF</h1>
+</div>
+
+<!--Ini untuk action tab click-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-dialog-centere" style="background-color: #d1e7dd; color: #0f5132">
+    <!-- Konten popup -->
+    <div class="modal-content">
+      <div class="modal-body">
+        <span style="display: inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+          </svg>
+        </span>
+        <span style="display: inline-block">
+          <h4>Data telah berhasil dihitung <span style="font-weight: 500"> TF-IDFnya</span>.</h4>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="w3-container">
+  <div class="w3-row" style="padding-left: 3em; width: 90%">
+    <a href="javascript:void(0)" onclick="openCity(event, 'Feature');">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Daftar Feature (kata)</div>
+    </a>
+    <a href="javascript:void(0)" onclick="openCity(event, 'TF-IDF');">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">TF-IDF</div>
+    </a>
+  </div>
+</div>
+
+<div class="position-relative" style="padding-top: 2em">
+  <div id="Feature" class="w3-container city" style="display: none">
+    <!-- Isi dengan code Data Mentah -->
+    <div class="container" style="overflow: scroll; height: 500px; padding-top: 0">
+      <table class="table-paginate" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr style="font-weight: 700">
+            <th>Feature</th>
+            {% for feature in feature_names %}
+            <th>{{ feature }}</th>
+            {% endfor %}
+          </tr>
+        <tr>
+          <td>TF</td>
+          {% for tf in tf_values %}
+          <td>{{ tf }}</td>
+          {% endfor %}
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div id="TF-IDF" class="w3-container city" style="display: none">
+    <div class="container" style="overflow: scroll; height: 500px; padding: top 0">
+      <table class="”table-paginate”">
+      <tr>
+     <th>Document</th>
+       {% for feature in feature_names %}
+       <th>{{ feature }}</th>
+       {% endfor %}
+    </tr>
+    {% for i in range(tfidf.shape[0]) %}
+		<tr>
+			<td>Doc {{ i+1 }}</td>
+			{% for value in tfidf[i] %}
+			<td>{{ value }}</td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+      </table>
+    </div>
+  </div>
+
+  <div class="position-absolute" style="bottom: 0; right: 12px; margin-bottom: 4px; padding-top: 12px">
+    <form action="/" method="POST"></form>
+    <button class="btn btn-outline-primary btn-lg">Proses Selanjutnya (TF-IDF)</button>
+  </div>
+</div>
+{% endblock %}

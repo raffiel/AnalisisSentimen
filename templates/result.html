@@ -1,0 +1,120 @@
+{% extends "layout.html" %} {% block title %}Dataset | Sentimen Analisis Capres 2024{% endblock %} {% block background %}
+<body class="bg" style="font-family: 'Poppins'; background: url(/static/img/bgbaru.jpg); background-size: 130em"></body>
+{% endblock %} {% block content %}
+<div class="container" style="text-align: center; color: #014a73;padding-top: 3em;">
+  <h1 style="font-weight: 700">Dataset</h1>
+</div>
+
+<!--Ini untuk action tab click-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-dialog-centere" style="background-color: #d1e7dd; color: #0f5132">
+    <!-- Konten popup -->
+    <div class="modal-content">
+      <div class="modal-body">
+        <span style="display: inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+          </svg>
+        </span>
+        <span style="display: inline-block">
+          <h4>Data telah berhasil melalui tahap <span style="font-style: italic"> preprocessing</span>.</h4>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="w3-container">
+  <button
+    type="button"
+    class="btn btn-primary position-absolute bottom-0 start-0"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    style="font-weight: 400; background-color: #014a73; border-radius: 0px 50px 50px 0px; height: 60px; width: 60px"
+  >
+    <span class="fa fa-info"></span>
+  </button>
+
+  <div class="w3-row" style="padding-left: 3em; width: 90%">
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-radius: 5px">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#dataset-mentah" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><h4>Dataset Mentah</h4></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#dataset_bersih" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><h4>Dataset seteleh <span style="font-style: italic;"> Preprocessing</span></h4></button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="dataset-mentah" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div class="container" style="overflow: scroll; height: 500px">
+          <table class="table-paginate">
+            <thead>
+              <tr style="font-weight: 700">
+                <th>No</th>
+                <th>Tweet</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in data_before %}
+              <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="dataset_bersih" role="tabpanel" aria-labelledby="profile-tab" tabindex="0" style="padding-left: 5px">
+        <div class="container" style="overflow: scroll; height: 500px">
+        <table class="”table-paginate”">
+          <thead>
+            <tr style="font-weight: 700">
+              <td>No</td>
+              <td>Tweet</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in data_after %}
+            <tr>
+              {% for col in row %}
+              <td>{{ col }}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel"><span style="font-weight: 800; color: #014a73">Info</span></h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Dataset ini berupa cuitan atau <span style="font-style: italic; font-weight: 700; color: #014a73">tweet</span> yang diperoleh menggunakan <span style="font-weight: 800; color: #014a73">Twitter API</span> pada bulan Oktober 2022
+            menggunakan <span style="font-style: italic">keyword</span> Anies,Ganjar dan Prabowo. Serta tagar
+            <span style="color: #014a73"> #Anies #AniesBaswedan #aniesbaswedan #Ganjar #GanjarPranowo #ganjarpranowo #Prabowo #PrabowoSubianto #prabowosubianto </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  
+</div>
+<div class="position-fixed" style="right:2em;bottom: 0em;z-index: 1000">
+  <form action="/label" method="POST">
+    <button type="submit" name="label_trigger" value="start_labeling" class="btn btn-primary btn-lg">Proses Selanjutnya (<span style="font-style: italic;">Labeling</span>)</button>
+  </form>
+</div>
+{% endblock %}
